@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 
+require('dotenv').config();
+
 const PORT = process.env.PORT
 
 
@@ -14,8 +16,9 @@ app.set('view engine', 'ejs');
 
 
 //Routes
-app.use('/', mangaRoute);
 app.use('/auth/', authRoute)
+
+app.use('/', mangaRoute);
 
 
 app.listen(PORT, ()=>{

@@ -1,13 +1,19 @@
 const express = require('express');
 
 
-const route = express();
+const homeRoute = express();
 
-route.get('/home', (req, res)=>{
-
+homeRoute.get('/home', (req, res)=>{
+    console.log('test');
+    res.render('home')
 })
 
 
-route.get('/:id', (req, res)=>{
-    
+homeRoute.get('/:id', (req, res)=>{
+    console.log('manga')
+    res.render('manga')
 })
+
+
+
+module.exports = homeRoute;

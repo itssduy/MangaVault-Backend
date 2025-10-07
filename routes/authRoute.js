@@ -1,12 +1,26 @@
 const express = require('express');
 
 
-const route = express();
+const authRoute = express();
 
-route.post('/signup', (req, res)=>{
-    
+
+authRoute.get('/signup', (req, res)=>{
+    console.log("signup");
+    res.render('auth/signup');
+})
+authRoute.post('/signup', (req, res)=>{
+    console.log("signup");
 })
 
-route.post('/login', (req, res)=>{
-    
+
+authRoute.get('/login', (req, res)=>{
+    console.log("login");
+    res.render('auth/login');
+
 })
+authRoute.post('/login', (req, res)=>{
+    console.log("login");
+
+})
+
+module.exports = authRoute;
