@@ -6,7 +6,7 @@ const authRoute = express();
 
 authRoute.get('/signup', (req, res)=>{
     console.log("signup");
-    res.render('auth/signup');
+    res.send('auth/signup');
 })
 authRoute.post('/signup', (req, res)=>{
     console.log("signup");
@@ -15,7 +15,7 @@ authRoute.post('/signup', (req, res)=>{
 
 authRoute.get('/login', (req, res)=>{
     console.log("login");
-    res.render('auth/login');
+    res.send('auth/login');
 
 })
 authRoute.post('/login', (req, res)=>{
