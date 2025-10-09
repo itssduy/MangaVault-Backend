@@ -16,9 +16,9 @@ app.set('view engine', 'ejs');
 
 
 //Routes
-app.use('/auth/', authRoute)
+app.use('api/auth/', authRoute)
 
-app.use('/', mangaRoute);
+app.use('api/manga/', mangaRoute);
 
 
 app.listen(PORT, ()=>{
