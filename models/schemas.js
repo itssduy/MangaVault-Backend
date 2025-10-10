@@ -2,12 +2,11 @@ const {Client} = require('pg');
 require('dotenv').config();
 
 
-//TODO add primary keys
 const SQL = `
 
 
     DROP TABLE IF EXISTS users;
-    DROP TABLE IF EXISTS apiKeys;
+    DROP TABLE IF EXISTS api_keys;
     DROP TABLE IF EXISTS mangas;
     DROP TABLE IF EXISTS categorys;
     DROP TABLE IF EXISTS bookmarks;
@@ -15,20 +14,20 @@ const SQL = `
 
 
     CREATE TABLE users (
-        id INTEGER,
+        id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         username VARCHAR(32) NOT NULL,
         password VARCHAR(255) NOT NULL,
-        created_at TIMESTAMP
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 
-    CREATE TABLE apiKeys (
-        id INTEGER,
+    CREATE TABLE api_keys (
+        id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         key VARCHAR(255),
         user_id INTEGER NOT NULL
     );
 
     CREATE TABLE mangas (
-        id INTEGER,
+        id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         title VARCHAR(255) NOT NULL,
         author VARCHAR(64),
         rating INTEGER,
@@ -37,22 +36,22 @@ const SQL = `
     );
 
     CREATE TABLE bookmarks (
-        id INTEGER,
+        id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         user_id INTEGER NOT NULL,
         manga_id INTEGER NOT NULL
     );
 
     CREATE TABLE reviews (
-        id INTEGER,
+        id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         user_id INTEGER NOT NULL,
         manga_id INTEGER NOT NULL,
-        created_at TIMESTAMP,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         rating INTEGER,
         text VARCHAR(512)
     );
 
     CREATE TABLE categorys (
-        id INTEGER,
+        id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         name VARCHAR(64) NOT NULL
     );
 
