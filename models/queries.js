@@ -5,8 +5,9 @@ const getAllUsers = ()=>{
     return rows;
 }
 
-const getUser = ()=>{
-    
+const getUser = (id)=>{
+    const { rows } = db.query(`SELECT * FROM users WHERE id=($1)`, [id])
+    return rows;
 }
 
 const createUser = ()=>{
