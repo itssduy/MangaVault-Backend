@@ -1,27 +1,35 @@
 const db = require('./pool');
 
-const getAllUsers = ()=>{
-    const { rows } = db.query('SELECT * FROM users');
+
+const getAllUsers = async ()=>{
+    const { rows } = await db.query('SELECT * FROM users');
     return rows;
 }
 
-const getUser = (id)=>{
-    const { rows } = db.query('SELECT * FROM users WHERE id=($1)', [id]);
+const getUser = async (id)=>{
+    const { rows } = await db.query('SELECT * FROM users WHERE id=($1)', [id]);
     return rows;
 }
 
-const createUser = (username, password)=>{
-    const { rows } = db.query('INSERT INTO users (username, password) VALUES ($1), ($2)', [username. password]);
+const createUser = async (username, password)=>{
+    const { rows } = await db.query('INSERT INTO users (username, password) VALUES(($1), ($2))', [username, password]);
     return rows;
 }
 
-const createApiKey = (userID)=>{
-    const { rows } = db.query('INSERT INTO api_keys (user_id) VALUES ($1)', [userID]);
+const createApiKey = async (userID)=>{
+    const { rows } = await db.query('INSERT INTO api_keys (user_id) VALUES ($1)', [userID]);
     return rows;
 }
-const authenticateUser = (key)=>{
-    const { rows } = db.query('SELECT * FROM api_keys WHERE key=($1)', [key]);
+const authenticateUser = async (key)=>{
+    const { rows } = await db.query('SELECT * FROM api_keys WHERE key=($1)', [key]);
     return rows;
 }
 
 
+module.exports = {
+    getAllUsers,
+    getUser,
+    createUser,
+    createApiKey,
+    authenticateUser
+}

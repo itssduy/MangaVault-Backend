@@ -6,21 +6,20 @@ require('dotenv').config();
 const PORT = process.env.PORT
 
 
+
 const mangaRoute = require('./routes/mangaRoute');
 const authRoute = require('./routes/authRoute');
 
 const app = express();
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
+app.use(express.urlencoded({extended: true}))
 
 //Routes
-app.use('api/auth/', authRoute)
+app.use('/auth', authRoute)
 
-app.use('api/manga/', mangaRoute);
+app.use('/manga', mangaRoute);
 
 
 app.listen(PORT, ()=>{
-    console.log(`Server is running on port:${PORT}`)
+    console.log(`Server is running on ${process.env.HOST}:${PORT}`)
 })
