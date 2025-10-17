@@ -16,6 +16,10 @@ const createUser = async (username, password)=>{
     return rows;
 }
 
+const loginUser = async (username, password) => {
+    const { rows } = await db.query('SELECT * FROM users WHERE username=($1) AND password=($2)', [username, password]);
+    return rows;
+}
 const createApiKey = async (userID)=>{
     const { rows } = await db.query('INSERT INTO api_keys (user_id) VALUES ($1)', [userID]);
     return rows;
@@ -31,5 +35,6 @@ module.exports = {
     getUser,
     createUser,
     createApiKey,
-    authenticateUser
+    authenticateUser,
+    loginUser,
 }

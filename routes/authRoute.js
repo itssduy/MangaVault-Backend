@@ -20,12 +20,16 @@ authRoute.post('/signup', (req, res)=>{
 })
 
 
-authRoute.get('/login', (req, res)=>{
-    console.log("login");
+authRoute.post('/login', async (req, res)=>{
+    const {username, password} = req.body
+
+    const test = await query.loginUser(username, password);
     res.send('/auth/login');
+    
 
 })
-authRoute.post('/login', (req, res)=>{
+
+authRoute.get('/login', (req, res)=>{
     console.log("login");
 
 })
