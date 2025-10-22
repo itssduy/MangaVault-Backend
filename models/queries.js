@@ -18,7 +18,10 @@ const createUser = async (username, password)=>{
 
 const loginUser = async (username, password) => {
     const { rows } = await db.query('SELECT * FROM users WHERE username=($1) AND password=($2)', [username, password]);
-    return rows;
+    if(rows[0]){
+        return rows[0]
+    }
+    return null;
 }
 const createApiKey = async (userID)=>{
     const { rows } = await db.query('INSERT INTO api_keys (user_id) VALUES ($1)', [userID]);

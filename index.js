@@ -12,6 +12,7 @@ const authRoute = require('./routes/authRoute');
 
 const app = express();
 
+
 app.use(express.urlencoded({extended: true}))
 
 //Routes

@@ -1,12 +1,13 @@
+
 const query = require('../models/queries');
 
 
-export const getSignup = (req, res)=>{
+const getSignup = (req, res)=>{
     console.log("signup");
     res.send('auth/signup');
 }
 
-export const postSignup = (req, res)=>{
+const postSignup = (req, res)=>{
     console.log("signup");
     
     const { username, password} = req.body;
@@ -15,16 +16,28 @@ export const postSignup = (req, res)=>{
 }
 
 
-export const getLogin = (req, res)=>{
+const getLogin = (req, res)=>{
     console.log("login");
 }
 
-export const postLogin = async (req, res)=>{
+const postLogin = async (req, res)=>{
     const {username, password} = req.body
 
     const login = await query.loginUser(username, password);
+    if(login)
+    {
+        print(login);
+    }
     res.send('/auth/login');
     
 
 }
 
+
+
+module.exports = {
+    getSignup,
+    postSignup,
+    getLogin,
+    postLogin
+}
