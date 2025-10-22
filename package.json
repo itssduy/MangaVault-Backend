@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "schemas": "node models/schemas.js",
+    "populate": "node models/populate.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +22,6 @@
   "homepage": "https://github.com/itssduy/MangaVault#readme",
   "dependencies": {
     "dotenv": "^17.2.3",
-    "ejs": "^3.1.10",
     "express": "^5.1.0",
     "pg": "^8.16.3"
   }

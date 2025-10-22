@@ -1,13 +1,13 @@
 const express = require('express');
 
 
-const route = express();
+const mangaController = require('../controllers/mangaController');
+const homeRoute = express();
 
-route.get('/home', (req, res)=>{
+homeRoute.get('/all', mangaController.getAll);
 
-})
+homeRoute.get('/:id', mangaController.getManga);
 
 
-route.get('/:id', (req, res)=>{
-    
-})
+
+module.exports = homeRoute;
