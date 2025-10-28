@@ -2,12 +2,10 @@ const express = require('express');
 
 
 const mangaController = require('../controllers/mangaController');
-const homeRoute = express();
-
-homeRoute.get('/all', mangaController.getAll);
-
-homeRoute.get('/:id', mangaController.getManga);
+const mangaRoute = express();
 
 
+mangaRoute.get('/:id', mangaController.getManga);
 
-module.exports = homeRoute;
+
+module.exports = mangaRoute;

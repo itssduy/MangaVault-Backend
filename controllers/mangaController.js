@@ -1,7 +1,7 @@
 const query = require('../models/queries');
 
 const getAll = async (req, res)=>{
-    res.json(await query.getAllUsers());
+    res.render("home");
 }
 
 const getManga = (req, res)=>{

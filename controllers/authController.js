@@ -4,7 +4,7 @@ const query = require('../models/queries');
 
 const getSignup = (req, res)=>{
     console.log("signup");
-    res.send('auth/signup');
+    res.render("signup")
 }
 
 const postSignup = (req, res)=>{
@@ -17,7 +17,7 @@ const postSignup = (req, res)=>{
 
 
 const getLogin = (req, res)=>{
-    console.log("login");
+    res.render("login");
 }
 
 const postLogin = async (req, res)=>{
