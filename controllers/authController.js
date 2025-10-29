@@ -3,16 +3,20 @@ const query = require('../models/queries');
 
 
 const getSignup = (req, res)=>{
-    console.log("signup");
     res.render("signup")
 }
 
 const postSignup = (req, res)=>{
-    console.log("signup");
     
     const { username, password} = req.body;
-    query.createUser(username, password)
-    res.send('/auth/signup');
+    if(username && password){
+        result = query.createUser(username, password);
+        console.log("user created")
+    }else {
+        res.send('username or password undefined');
+        return;
+    }
+    res.redirect('/auth/login');
 }
 
 
@@ -21,15 +25,18 @@ const getLogin = (req, res)=>{
 }
 
 const postLogin = async (req, res)=>{
+    console.log(req.body)
     const {username, password} = req.body
 
     const login = await query.loginUser(username, password);
     if(login)
     {
-        print(login);
+        console.log(login);
+        res.redirect("/manga/home");
+    } else {
+        res.send("invalid");
     }
-    res.send('/auth/login');
-    
+
 
 }
 

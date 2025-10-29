@@ -5,7 +5,8 @@ const SQL =  `
     INSERT INTO users (username,password) 
     VALUES 
         ('bob', '12345'),
-        ('test', 'test123');
+        ('test', 'test123'),
+        ('admin', 'pass');
 
 
     INSERT INTO mangas (title, author, rating, pages)
