@@ -27,9 +27,13 @@ const createApiKey = async (userID)=>{
     const { rows } = await db.query('INSERT INTO api_keys (user_id) VALUES ($1)', [userID]);
     return rows;
 }
-const authenticateUser = async (key)=>{
+const getApiKey = async (key)=>{
     const { rows } = await db.query('SELECT * FROM api_keys WHERE key=($1)', [key]);
     return rows;
+}
+
+const deleteApiKey = async (key)=>{
+    const { rows } = await db.query('DELETE * FROM api+keys WHERE key=($1)', [key]);
 }
 
 
@@ -38,6 +42,7 @@ module.exports = {
     getUser,
     createUser,
     createApiKey,
-    authenticateUser,
+    getApiKey,
+    deleteApiKey,
     loginUser,
 }

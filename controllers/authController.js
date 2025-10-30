@@ -25,13 +25,13 @@ const getLogin = (req, res)=>{
 }
 
 const postLogin = async (req, res)=>{
-    console.log(req.body)
     const {username, password} = req.body
 
     const login = await query.loginUser(username, password);
     if(login)
     {
-        console.log(login);
+
+        //Add apikey to local storage
         res.redirect("/manga/home");
     } else {
         res.send("invalid");

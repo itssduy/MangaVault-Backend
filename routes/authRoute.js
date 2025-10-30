@@ -1,8 +1,8 @@
 const express = require('express');
 
-
 const authController = require('../controllers/authController');
 const authRoute = express();
+
 
 
 authRoute.get('/signup', authController.getSignup)
