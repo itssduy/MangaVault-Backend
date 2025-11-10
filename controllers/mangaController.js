@@ -1,7 +1,11 @@
 const query = require('../models/queries');
 
 const getAll = async (req, res)=>{
-    res.render("home");
+    const mangas = await query.getAllMangas();
+
+    console.log(mangas);
+
+    res.render("home", {mangas: mangas});
 }
 
 const getManga = (req, res)=>{

@@ -1,1 +1,14 @@
 <h1>Home works!</h1>
+
+<ul>
+    <% mangas.map(x => { %>
+        <li>
+            <img src=<%=x.img%> alt="">
+            <%= x.title %>
+            <%= x.author %>
+            <%= x.rating %>
+            <%= x.pages %>
+        </li>
+    <%}) %>
+    <% console.log(mangas)%>
+</ul>

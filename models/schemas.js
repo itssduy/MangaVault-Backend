@@ -21,8 +21,7 @@ const SQL = `
     );
 
     CREATE TABLE api_keys (
-        id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-        key VARCHAR(255),
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         user_id INTEGER NOT NULL
     );
 
@@ -31,6 +30,7 @@ const SQL = `
         title VARCHAR(255) NOT NULL,
         author VARCHAR(64),
         rating INTEGER,
+        img TEXT,
         pages INTEGER,
         catogry_id INTEGER
     );
