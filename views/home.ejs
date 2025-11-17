@@ -1,0 +1,31 @@
+<%- include('header') %>
+
+
+<head>
+    <link rel="stylesheet" href="/home.css">
+</head>
+
+
+
+<main>
+    <a href="/manga/add">Add new manga</a>
+
+    <ul class="mangas">
+        <% mangas.map(x => { %>
+            <li class="manga">
+                <img src="<%=x.img%>" alt="">
+                <div class="mangaDetails">
+                    <p><%= x.title %></p>
+                    <p><%= x.author %></p>
+                    <p><%= x.rating %></p>
+                    <p><%= x.pages %></p>
+                </div>
+                <a href="/manga/edit/<%= x.id%>">Edit</a>
+                <form action="/manga/delete/<%= x.id%>" method="POST">
+                    <button type="submit">X</button>
+                </form>
+
+            </li>
+        <%}) %>
+    </ul>
+</main>
