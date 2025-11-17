@@ -35,7 +35,7 @@ const SQL =  `
         ('The Promised Neverland', 'Kaiu Shirai', 4, 180, ''),
         ('Parasyte', 'Hitoshi Iwaaki', 4, 321, '');
 `
-const connectionString = `postgresql://${process.env.USER}:${process.env.PASSWORD}@${process.env.HOST}:${process.env.DBPORT}/${process.env.DB}`
+const connectionString = `${process.env.DB_URL}`
 
 
 async function main(){

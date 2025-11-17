@@ -57,7 +57,7 @@ const SQL = `
 
 `
 
-const connectionString = `postgresql://${process.env.USER}:${process.env.PASSWORD}@${process.env.HOST}:${process.env.DBPORT}/${process.env.DB}`
+const connectionString = `${process.env.DB_URL}`
 
 
 async function main(){
