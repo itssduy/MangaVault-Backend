@@ -33,10 +33,28 @@ const deleteManga = async (req, res)=>{
     res.redirect('/manga/home');
 }
 
+const geteditManga = async (req, res) => {
+    const mangaId = req.params.id;
+    const manga = await query.getMangaById(mangaId);
+    res.render('editmanga', {manga: manga});
+}
+
+const posteditManga = async (req, res) => {
+    const mangaId = req.params.id;
+    const {title, author, rating, img, pages} = req.body
+    await query.editManga(mangaId ,title, author, rating, img, pages);
+
+    res.redirect('/manga/home');
+
+
+
+}
 module.exports = {
     getAll,
     getManga,
     postaddManga,
     getaddManga,
-    deleteManga
+    deleteManga,
+    geteditManga,
+    posteditManga
 }

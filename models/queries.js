@@ -44,9 +44,9 @@ const getAllMangas = async ()=>{
     return rows
 }
 
-const getMangasById = async (id)=>{
-    const { rows } = await db.query('SELECT * FROM mangas WHERE key=($1)', [id]);
-    return rows
+const getMangaById = async (id)=>{
+    const { rows } = await db.query('SELECT * FROM mangas WHERE id=($1)', [id]);
+    return rows[0];
 }
 
 const deleteManga = async (id) => {
@@ -56,6 +56,11 @@ const deleteManga = async (id) => {
 
 const addManga = async(title, author, rating, img, pages)  => {
     const { rows } = await db.query('INSERT INTO mangas (title, author, rating, img, pages) VALUES ($1,$2,$3,$4, $5) RETURNING *', [title, author, rating, img, pages]);
+    return rows;
+}
+
+const editManga = async (id, title, author, rating, img, pages) => {
+    const { rows } = await db.query('UPDATE mangas SET title=($1), author=($2), rating=($3), img=($4), pages=($5) WHERE id=($6)', [title, author, rating, img, pages, id]);
     return rows;
 }
 
@@ -84,9 +89,10 @@ module.exports = {
     deleteApiKey,
     getUserByName,
     getAllMangas,
-    getMangasById,
+    getMangaById,
     addManga,
     deleteManga,
+    editManga,
     getBookmarks,
     deleteBookmark,
     addBookmark
