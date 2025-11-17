@@ -9,7 +9,7 @@ mangaRoute.use(authMiddleware.auth);
 
 mangaRoute.get('/home', mangaController.getAll);
 mangaRoute.get('/add', mangaController.getaddManga);
-mangaRoute.post('/add', mangaController.addManga);
+mangaRoute.post('/add', mangaController.postaddManga);
 mangaRoute.get('/get/:id', mangaController.getManga);
 mangaRoute.post('/delete/:id', mangaController.deleteManga);
 

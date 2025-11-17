@@ -36,7 +36,7 @@ const getApiKey = async (userID)=>{
 }
 
 const deleteApiKey = async (key)=>{
-    const { rows } = await db.query('DELETE * FROM api+keys WHERE key=($1)', [key]);
+    const { rows } = await db.query('DELETE * FROM api_keys WHERE key=($1)', [key]);
 }
 
 const getAllMangas = async ()=>{
@@ -47,6 +47,16 @@ const getAllMangas = async ()=>{
 const getMangasById = async (id)=>{
     const { rows } = await db.query('SELECT * FROM mangas WHERE key=($1)', [id]);
     return rows
+}
+
+const deleteManga = async (id) => {
+    const { rows } = await db.query('DELETE FROM mangas WHERE id=($1)', [id]);
+    return rows;
+}
+
+const addManga = async(title, author, rating, img, pages)  => {
+    const { rows } = await db.query('INSERT INTO mangas (title, author, rating, img, pages) VALUES ($1,$2,$3,$4, $5) RETURNING *', [title, author, rating, img, pages]);
+    return rows;
 }
 
 const getBookmarks = async (userID)=> {
@@ -75,6 +85,9 @@ module.exports = {
     getUserByName,
     getAllMangas,
     getMangasById,
+    addManga,
+    deleteManga,
     getBookmarks,
-    deleteBookmark
+    deleteBookmark,
+    addBookmark
 }

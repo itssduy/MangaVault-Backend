@@ -20,8 +20,8 @@
                     <p><%= x.rating %></p>
                     <p><%= x.pages %></p>
                 </div>
-                <form action="">
-                    <a>X</a>
+                <form action="/manga/delete/<%= x.id%>" method="POST">
+                    <button type="submit">X</button>
                 </form>
 
             </li>
