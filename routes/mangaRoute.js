@@ -8,7 +8,9 @@ const mangaRoute = express();
 mangaRoute.use(authMiddleware.auth);
 
 mangaRoute.get('/home', mangaController.getAll);
-mangaRoute.get('/:id', mangaController.getManga);
-
+mangaRoute.get('/add', mangaController.getaddManga);
+mangaRoute.post('/add', mangaController.addManga);
+mangaRoute.get('/get/:id', mangaController.getManga);
+mangaRoute.post('/delete/:id', mangaController.deleteManga);
 
 module.exports = mangaRoute;

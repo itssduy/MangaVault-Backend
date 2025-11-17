@@ -5,13 +5,13 @@ const authRoute = express();
 
 
 
-authRoute.get('/signup', authController.getSignup)
+authRoute.get('/signup', authController.getSignup);
 
-authRoute.post('/signup', authController.postSignup)
+authRoute.post('/signup', authController.postSignup);
 
-authRoute.get('/login', authController.getLogin)
+authRoute.get('/login', authController.getLogin);
 
-authRoute.post('/login', authController.postLogin)
+authRoute.post('/login', authController.postLogin);
 
 
 

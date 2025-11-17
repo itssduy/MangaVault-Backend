@@ -1,14 +1,30 @@
-<h1>Home works!</h1>
+<%- include('header') %>
 
-<ul>
-    <% mangas.map(x => { %>
-        <li>
-            <img src=<%=x.img%> alt="">
-            <%= x.title %>
-            <%= x.author %>
-            <%= x.rating %>
-            <%= x.pages %>
-        </li>
-    <%}) %>
-    <% console.log(mangas)%>
-</ul>
+
+<head>
+    <link rel="stylesheet" href="/home.css">
+</head>
+
+
+
+<main>
+    <a href="/manga/add">Add new manga</a>
+
+    <ul class="mangas">
+        <% mangas.map(x => { %>
+            <li class="manga">
+                <img src="<%=x.img%>" alt="">
+                <div class="mangaDetails">
+                    <p><%= x.title %></p>
+                    <p><%= x.author %></p>
+                    <p><%= x.rating %></p>
+                    <p><%= x.pages %></p>
+                </div>
+                <form action="">
+                    <a>X</a>
+                </form>
+
+            </li>
+        <%}) %>
+    </ul>
+</main>

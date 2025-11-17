@@ -18,7 +18,7 @@ const postSignup = async (req, res)=>{
         if(user){
             console.log('theres already a user with this name')
             res.send('there is already a user with this name')
-            console.log(user);
+            //console.log(user);
             return;
 
         } else {
