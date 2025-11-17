@@ -59,16 +59,18 @@ const SQL = `
 
 const connectionString = `postgresql://${process.env.USER}:${process.env.PASSWORD}@${process.env.HOST}:${process.env.DBPORT}/${process.env.DB}`
 
+
 async function main(){
 
     const client = new Client({
         connectionString: connectionString,
+        ssl: { rejectUnauthorized: false }
     });
-
 
     await client.connect();
     await client.query(SQL);
     await client.end();
+
 }
 
 main();
